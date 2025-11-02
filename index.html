@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Starship airspeed by altitude</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Cal+Sans:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+</head>
+<body>
+  <main class="container">
+    <h1>SpaceX Starship — estimated airspeed by altitude</h1>
+
+    <form id="meterForm" class="form" onsubmit="return false;">
+      <label for="meters">Altitude (meters)</label>
+      <input id="meters" inputmode="numeric" pattern="[0-9]*" placeholder="e.g. 1200" />
+      <div class="controls">
+        <button id="calcBtn" type="button">Calculate</button>
+        <button id="zeroBtn" type="button" class="muted">Set 800 m (landing burn)</button>
+      </div>
+    </form>
+
+    <section class="results" aria-live="polite">
+      <div class="result-row">
+        <div class="label">Airspeed (km/h)</div>
+        <div id="airspeed" class="value">—</div>
+      </div>
+      <div id="note" class="note"></div>
+    </section>
+
+    <details class="info">
+      <summary>About this calculator</summary>
+      <p>
+        Computes a fitted regression:
+        y = 7.807852e-10 x⁴ + (-1.799129e-3) x³ + 8.971645e-4 x² + 0.4413457 x + 16.40816
+        where x is altitude in meters and y is airspeed in km/h. Landing burn begins at ~800 m.
+      </p>
+    </details>
+
+    <footer>
+      <small>Simple estimator — not an official SpaceX source.</small>
+    </footer>
+  </main>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
